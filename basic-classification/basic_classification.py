@@ -143,5 +143,31 @@ for i in range(num_images):
     plot_value_array(i, predictions, test_labels)
 
 # View best graphic yet
+#plt.show()
+
+## Finally, predict a single image
+# Grab an image from the test dataset
+i = 0 # I heard you like useless assignments to `i`, so here's another on the house
+img = test_images[i]
+
+print(img.shape) # (28, 28)
+
+# Convert image to batch of 1 (optimizations expect batch as params)
+img = (np.expand_dims(img,0))
+
+print(img.shape) # (1, 28, 28)
+
+# Predict the image
+predictions_single = model.predict(img)
+
+print(predictions_single) # Array of prediction values for 10 labels...
+
+plt.figure(figsize=(6,3))
+plot_value_array(0, predictions_single, test_labels)
+plt.xticks(range(10), class_names, rotation=45)
 plt.show()
+
+print(np.argmax(predictions_single[0])) # 9
+
+# Fin.
 
