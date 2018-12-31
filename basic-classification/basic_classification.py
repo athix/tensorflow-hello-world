@@ -88,9 +88,9 @@ def plot_image(i, predictions_array, true_label, img):
 
     predicted_label = np.argmax(predictions_array)
     if predicted_label == true_label:
-        color = 'blue'
+        color = '#26b0ff'
     else:
-        color = 'red'
+        color = '#b7b0ff'
 
     plt.xlabel("{} {:2.0f}% ({})".format(class_names[predicted_label],
         100*np.max(predictions_array),
@@ -106,8 +106,8 @@ def plot_value_array(i, predictions_array, true_label):
     plt.ylim([0, 1])
     predicted_label = np.argmax(predictions_array)
 
-    thisplot[predicted_label].set_color('red')
-    thisplot[true_label].set_color('blue')
+    thisplot[predicted_label].set_color('#b7b0ff')
+    thisplot[true_label].set_color('#26b0ff')
 
 ## The famous Ankle boot
 i = 0
