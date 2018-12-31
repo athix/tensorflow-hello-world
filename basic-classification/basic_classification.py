@@ -118,5 +118,16 @@ plt.subplot(1,2,2)
 plot_value_array(i, predictions, test_labels)
 
 # View our fancy Ankle boot graphic
+# plt.show() # Editor's note: this seems to also render all previous plt graphs.
+
+## The infamous ~bag~ sandal sneaker
+i = 12 # This seems redundant, DRY it up?
+plt.figure(figsize=(6,3))
+plt.subplot(1,2,1)
+plot_image(i, predictions, test_labels, test_images)
+plt.subplot(1,2,2)
+plot_value_array(i, predictions, test_labels)
+
+# View our terrible prediction
 plt.show()
 
