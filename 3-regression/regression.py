@@ -28,3 +28,17 @@ raw_dataset = pd.read_csv(dataset_path, names=column_names, na_values = "?", com
 dataset = raw_dataset.copy()
 print(dataset.tail())
 
+####################
+## Clean the data ##
+####################
+
+print(dataset.isna().sum())
+
+dataset = dataset.dropna()
+origin = dataset.pop('Origin')
+dataset['USA'] = (origin == 1)*1.0
+dataset['Europe'] = (origin == 2)*1.0
+dataset['Japan'] = (origin == 3)*1.0
+
+print(dataset.tail())
+
