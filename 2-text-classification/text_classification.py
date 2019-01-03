@@ -65,3 +65,17 @@ print(len(train_data[0]), len(train_data[1])) # (256, 256)
 
 print(train_data[0]) # Big array of words in first review
 
+#####################
+## Build the model ##
+#####################
+
+vocab_size = 10000
+
+model = keras.Sequential()
+model.add(keras.layers.Embedding(vocab_size, 16))
+model.add(keras.layers.GlobalAveragePooling1D())
+model.add(keras.layers.Dense(16, activation=tf.nn.relu))
+model.add(keras.layers.Dense(1, activation=tf.nn.sigmoid))
+
+print(model.summary()) # Nice little summary table
+
