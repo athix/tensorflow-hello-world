@@ -43,3 +43,25 @@ def decode_review(text):
 
 print(decode_review(train_data[0])) # " this film was just brilliant casting [...]"
 
+######################
+## Prepare the data ##
+######################
+
+# Pad data to support conversion to integer tensor
+
+train_data = keras.preprocessing.sequence.pad_sequences(
+        train_data,
+        value=word_index["<PAD>"],
+        padding='post',
+        maxlen=256)
+
+test_data = keras.preprocessing.sequence.pad_sequences(
+        test_data,
+        value=word_index["<PAD>"],
+        padding='post',
+        maxlen=256)
+
+print(len(train_data[0]), len(train_data[1])) # (256, 256)
+
+print(train_data[0]) # Big array of words in first review
+
