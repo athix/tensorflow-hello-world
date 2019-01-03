@@ -4,7 +4,8 @@ To try any of this yourself, simply install TensorFlow [per documention](https:/
 
 * Python3
 * Pip
-* TensorFlow (via pip3)
+* TensorFlow (via pip3 `tensorflow`)
+* Seaborn (via pip3 `seaborn`)
 * Internet conection (for downloading datasets, etc)
 
 ## Helpful Resources
