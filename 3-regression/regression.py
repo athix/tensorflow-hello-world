@@ -8,6 +8,7 @@ import pathlib
 
 import pandas as pd
 import seaborn as sns
+import matplotlib.pyplot as plt # Allow calling plt.show()
 
 import tensorflow as tf
 from tensorflow import keras
@@ -41,4 +42,28 @@ dataset['Europe'] = (origin == 2)*1.0
 dataset['Japan'] = (origin == 3)*1.0
 
 print(dataset.tail())
+
+##################################
+## Split data into Train / Test ##
+##################################
+
+train_dataset = dataset.sample(frac=0.8, random_state=0)
+test_dataset = dataset.drop(train_dataset.index)
+
+######################
+## Inspect the data ##
+######################
+
+# Inspect training data using a few column pairs
+
+sns.pairplot(train_dataset[["MPG", "Cylinders", "Displacement", "Weight"]], diag_kind="kde")
+plt.show() # Show graph
+
+# Overall stats
+
+train_stats = train_dataset.describe()
+train_stats.pop("MPG")
+train_stats = train_stats.transpose()
+
+print(train_stats)
 
