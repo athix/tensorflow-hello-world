@@ -107,3 +107,11 @@ history = model.fit(
         validation_data=(x_val, y_val),
         verbose=1)
 
+########################
+## Evaluate the model ##
+########################
+
+results = model.evaluate(test_data, test_labels)
+
+print(results) # ~[0.3298278612327576, 0.87268]
+
