@@ -83,3 +83,15 @@ model.compile(optimizer=tf.train.AdamOptimizer(),
         loss='binary_crossentropy',
         metrics=['accuracy'])
 
+#############################
+## Create a validation set ##
+#############################
+
+# This is separate from the testing data, so that testing data can be used as an example of real-world testing.
+
+x_val = train_data[:10000]
+partial_x_train = train_data[10000:]
+
+y_val = train_labels[:10000]
+partial_y_train = train_labels[10000:]
+
