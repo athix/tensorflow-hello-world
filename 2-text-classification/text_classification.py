@@ -6,6 +6,7 @@ import tensorflow as tf
 from tensorflow import keras
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 print(tf.__version__) # >= 1.12.0
 
@@ -114,4 +115,30 @@ history = model.fit(
 results = model.evaluate(test_data, test_labels)
 
 print(results) # ~[0.3298278612327576, 0.87268]
+
+############################
+## Training History Graph ##
+############################
+
+history_dict = history.history
+print(history_dict.keys()) # dict_keys(['acc', 'val_acc', 'loss', 'val_loss'])
+
+# Reuse variable, DRY
+acc = history_dict['acc']
+val_acc = history_dict['val_acc']
+loss = history_dict['loss']
+val_loss = history_dict['val_loss']
+
+epochs = range(1, len(acc) + 1)
+
+# "bo" = "blue dot"
+plt.plot(epochs, loss, 'bo', label='Training loss')
+# "b" = "solid blue line"
+plt.plot(epochs, val_loss, 'b', label='Validation loss')
+plt.title('Training and validation loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+
+plt.show()
 
