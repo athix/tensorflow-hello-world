@@ -114,3 +114,24 @@ example_result = model.predict(example_batch)
 
 print(example_result)
 
+#####################
+## Train the model ##
+#####################
+
+class PrintDot(keras.callbacks.Callback):
+    def on_epoch_end(self, epoch, logs):
+        if epoch % 100 == 0: print('') # newline every 100 epochs
+        print('.', end='')
+
+EPOCHS = 1000
+
+history = model.fit(
+        normed_train_data, train_labels,
+        epochs=EPOCHS, validation_split = 0.2, verbose=0,
+        callbacks=[PrintDot()])
+
+hist = pd.DataFrame(history.history)
+hist['epoch'] = history.epoch
+
+print(hist.tail())
+
