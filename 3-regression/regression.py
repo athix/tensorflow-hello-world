@@ -160,3 +160,21 @@ def plot_history(history):
 
 plot_history(history)
 
+########################
+## Add early stopping ##
+########################
+
+model = build_model()
+
+early_stop = keras.callbacks.EarlyStopping(monitor='val_loss', patience=50)
+
+history = model.fit(
+        normed_train_data,
+        train_labels,
+        epochs = EPOCHS,
+        validation_split = 0.2,
+        verbose = 0,
+        callbacks=[early_stop, PrintDot()])
+
+plot_history(history)
+
