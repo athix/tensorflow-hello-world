@@ -178,3 +178,32 @@ history = model.fit(
 
 plot_history(history)
 
+loss, mae, mse = model.evaluate(normed_test_data, test_labels, verbose=0)
+
+print("Testing set Mean Abs Error: {:5.2f} MPG".format(mae)) # Testing set Mean Abs Error: 1.88 MPG
+
+######################
+## Make predictions ##
+######################
+
+test_predictions = model.predict(normed_test_data).flatten()
+
+plt.scatter(test_labels, test_predictions)
+plt.xlabel('True Values [MPG]')
+plt.ylabel('Predictions [MPG]')
+plt.axis('equal')
+plt.axis('square')
+plt.xlim([0,plt.xlim()[1]])
+plt.ylim([0,plt.ylim()[1]])
+plt.plot([-100, 100], [-100, 100])
+
+plt.show()
+
+error = test_predictions - test_labels
+
+plt.hist(error, bins = 25)
+plt.xlabel("Prediction Error [MPG]")
+plt.ylabel("Count")
+
+plt.show()
+
