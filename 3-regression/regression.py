@@ -57,7 +57,7 @@ test_dataset = dataset.drop(train_dataset.index)
 # Inspect training data using a few column pairs
 
 sns.pairplot(train_dataset[["MPG", "Cylinders", "Displacement", "Weight"]], diag_kind="kde")
-plt.show() # Show graph
+# plt.show() # Show graph
 
 # Overall stats
 
@@ -66,4 +66,20 @@ train_stats.pop("MPG")
 train_stats = train_stats.transpose()
 
 print(train_stats)
+
+################################
+## Split features from labels ##
+################################
+
+train_labels = train_dataset.pop('MPG')
+test_labels = test_dataset.pop('MPG')
+
+########################
+## Normalize the data ##
+########################
+
+def norm(x):
+    return (x - train_stats['mean']) / train_stats['std']
+normed_train_data = norm(train_dataset)
+normed_test_data = norm(test_dataset)
 
