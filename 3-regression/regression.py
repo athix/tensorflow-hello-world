@@ -83,3 +83,29 @@ def norm(x):
 normed_train_data = norm(train_dataset)
 normed_test_data = norm(test_dataset)
 
+#####################
+## Build the model ##
+#####################
+
+def build_model():
+    model = keras.Sequential([
+        layers.Dense(64, activation=tf.nn.relu, input_shape=[len(train_dataset.keys())]),
+        layers.Dense(64, activation=tf.nn.relu),
+        layers.Dense(1)
+    ])
+
+    optimizer = tf.train.RMSPropOptimizer(0.001)
+
+    model.compile(loss='mse',
+            optimizer=optimizer,
+            metrics=['mae', 'mse'])
+    return model
+
+model = build_model()
+
+#######################
+## Inspect the model ##
+#######################
+
+print(model.summary())
+
