@@ -87,3 +87,12 @@ model.fit(train_images, train_labels,
           validation_data = (test_images, test_labels),
           verbose=0)
 
+latest = tf.train.latest_checkpoint(checkpoint_dir)
+
+print(latest)
+
+model = create_model()
+model.load_weights(latest)
+loss, acc = model.evaluate(test_images, test_labels)
+print("Restored model, arruacy: {:5.2f}%".format(100*acc))
+
