@@ -6,6 +6,8 @@ To try any of this yourself, simply install TensorFlow [per documention](https:/
 * Pip
 * TensorFlow (via pip3 `tensorflow`)
 * Seaborn (via pip3 `seaborn`)
+* Hierarchical Data Format (via pip3 `h5py`)
+* Yaml (via pip3 `pyyaml`)
 * Internet conection (for downloading datasets, etc)
 
 ## Helpful Resources
