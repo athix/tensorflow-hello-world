@@ -72,3 +72,18 @@ model.load_weights(checkpoint_path)
 loss, acc = model.evaluate(test_images, test_labels)
 print("Restored model, accuracy: {:5.2f}%".format(100*acc))
 
+# Callback options
+checkpoint_path = "training_2/cp-{epoch:04d}.ckpt"
+checkpoint_dir = os.path.dirname(checkpoint_path)
+
+checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
+        checkpoint_path, verbose=1, save_weights_only=True,
+        # Save wieghts, every 5-epochs.
+        period=5)
+
+model = create_model()
+model.fit(train_images, train_labels,
+          epochs = 50, callbacks = [checkpoint_callback],
+          validation_data = (test_images, test_labels),
+          verbose=0)
+
