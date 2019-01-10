@@ -61,3 +61,14 @@ model.fit(train_images, train_labels, epochs=10,
           validation_data = (test_images, test_labels),
           callbacks = [checkpoint_callback]) # pass callback to training
 
+# Create fresh model
+model = create_model()
+
+loss, acc = model.evaluate(test_images, test_labels)
+print("Untrained model, accuracy: {:5.2f}%".format(100*acc))
+
+# Load weights from checkpoint
+model.load_weights(checkpoint_path)
+loss, acc = model.evaluate(test_images, test_labels)
+print("Restored model, accuracy: {:5.2f}%".format(100*acc))
+
