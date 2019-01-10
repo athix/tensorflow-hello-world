@@ -86,8 +86,8 @@ smaller_history = smaller_model.fit(
 # Create a bigger model
 
 bigger_model = keras.Sequential([
-    keras.layers.Dense(512, activation=tf.nn.relu, input_shape=(NUM_WORDS,)),
-    keras.layers.Dense(512, activation=tf.nn.relu),
+    keras.layers.Dense(256, activation=tf.nn.relu, input_shape=(NUM_WORDS,)),
+    keras.layers.Dense(256, activation=tf.nn.relu), # Using 256 to be easier on memory
     keras.layers.Dense(1, activation=tf.nn.sigmoid)
 ])
 
