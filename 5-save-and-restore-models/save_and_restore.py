@@ -96,3 +96,17 @@ model.load_weights(latest)
 loss, acc = model.evaluate(test_images, test_labels)
 print("Restored model, arruacy: {:5.2f}%".format(100*acc))
 
+###########################
+## Manually save weights ##
+###########################
+
+# Save
+model.save_weights('./checkpoints/my_checkpoint')
+
+# Restore
+model = create_model()
+model.load_weights('./checkpoints/my_checkpoint')
+
+loss,acc = model.evaluate(test_images, test_labels)
+print("Restored model, accuracy: {:5.2f}%".format(100*acc))
+
