@@ -32,3 +32,31 @@ test_data = multi_hot_sequences(test_data, dimension=NUM_WORDS)
 plt.plot(train_data[0])
 plt.show()
 
+#############################
+## Demonstrate Overfitting ##
+#############################
+
+# Create baseline model
+
+baseline_model = keras.Sequential([
+    # `input_shape` is only required here so that `.summary` works.
+    keras.layers.Dense(16, activation=tf.nn.relu, input_shape=(NUM_WORDS,)),
+    keras.layers.Dense(16, activation=tf.nn.relu),
+    keras.layers.Dense(1, activation=tf.nn.sigmoid)
+])
+
+baseline_model.compile(
+        optimizer='adam',
+        loss='binary_crossentropy',
+        metrics=['accuracy', 'binary_crossentropy'])
+
+print(baseline_model.summary())
+
+baseline_history = baseline_model.fit(
+        train_data,
+        train_labels,
+        epochs=20,
+        batch_size=512,
+        validation_data=(test_data, test_labels),
+        verbose=2)
+
