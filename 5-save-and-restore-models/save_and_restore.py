@@ -110,3 +110,31 @@ model.load_weights('./checkpoints/my_checkpoint')
 loss,acc = model.evaluate(test_images, test_labels)
 print("Restored model, accuracy: {:5.2f}%".format(100*acc))
 
+###########################
+## Save the entire model ##
+###########################
+
+model = create_model()
+
+# You need to use a keras.optimizer to restore the optimizer state from an HDF5 file.
+model.compile(
+        optimizer='adam',
+        loss=tf.keras.losses.sparse_categorical_crossentropy,
+        metrics=['accuracy'])
+
+model.fit(train_images, train_labels, epochs=5)
+
+model.save('my_model.h5')
+
+new_model = keras.models.load_model('my_model.h5')
+print(new_model.summary())
+
+loss, acc = new_model.evaluate(test_images, test_labels)
+print("Restore model, accurcy: {:5.2f}%".format(100*acc))
+
+############################################
+## Ignore experimental saved_model method ##
+############################################
+
+# The end.
+
