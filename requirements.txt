@@ -1,0 +1,4 @@
+tensorflow
+seaborn
+h5py
+pyyaml
