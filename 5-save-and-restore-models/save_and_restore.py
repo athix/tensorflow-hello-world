@@ -137,4 +137,3 @@ print("Restore model, accurcy: {:5.2f}%".format(100*acc))
 ############################################
 
 # The end.
-

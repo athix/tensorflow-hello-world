@@ -171,4 +171,3 @@ plt.show()
 print(np.argmax(predictions_single[0])) # 9
 
 # Fin.
-

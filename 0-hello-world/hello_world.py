@@ -9,4 +9,3 @@ hello = tf.constant('Hello, Tensorflow!')
 print(hello.numpy())
 
 # Hello, Tensorflow!
-

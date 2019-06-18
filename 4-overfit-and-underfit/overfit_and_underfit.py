@@ -201,4 +201,3 @@ plot_history([
     ('l2', l2_model_history),
     ('dropout', dropout_model_history)
 ])
-

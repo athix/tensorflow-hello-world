@@ -5,4 +5,3 @@ Per TensorFlow getting started docs: [Text Classification](https://www.tensorflo
 See also:
 
 * [Getting Started w/ TF & Deep Learning | Josh Gordon](https://youtu.be/tYYVSEHq-io) (~52min)
-
