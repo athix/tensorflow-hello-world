@@ -15,5 +15,4 @@ Code examples following the TensorFlow getting started tutorial.
 ## Helpful Resources
 
 * [TensorFlow | Getting Started](https://tensorflow.org/tutorials)
-* [YouTube | Siraj Raval](https://www.youtube.com/channel/UCWN3xxRkmTPmbKwht9FuE5A)
 * [Distill](https://distill.pub)
